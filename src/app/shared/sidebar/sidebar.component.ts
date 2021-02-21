@@ -5,9 +5,9 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './sidebar.component.html',
   styles: [
     `
-    li{
-      cursor: pointer
-    }
+      li{
+        cursor: pointer
+      }
     `
   ]
 })

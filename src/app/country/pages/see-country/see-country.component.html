@@ -1,1 +1,41 @@
-<p>see-country works!</p>
+<div *ngIf="!country; else divCountry" class="alert alert-info">
+    Please wait...
+</div>
+
+<ng-template #divCountry>
+    <h2>{{country.name}} [{{country.alpha2Code}}]</h2>
+    <hr>
+    <div class="row">
+        <div class="col-xl-6 col-md-6 col-xs-12">
+            <div class="card">
+                <img [src]="country.flag" class="card-img-top img-thumbnail" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{country.capital}}, {{country.name}}</h5>
+                    <p class="card-text">{{country.altSpellings}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-6 col-md-6 col-xs-12">
+            <div class="card">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><strong>Population: </strong>{{country.population | number}}</li>
+                    <li class="list-group-item"><strong>Time Zone: </strong>{{country.timezones}}</li>
+                    <li class="list-group-item"><strong>Region: </strong>{{country.region}}, {{country.subregion}}</li>
+                    <li class="list-group-item"><strong>Demonym: </strong>{{country.demonym}}</li>
+                    <li class="list-group-item"><strong>Calling Code: </strong>{{country.callingCodes}}</li>
+                    <li class="list-group-item"><strong>Coins: </strong><p *ngFor="let currency of country.currencies">
+                        {{currency.code}}, {{currency.name}}, {{currency.symbol}}</p>
+                    </li>
+                </ul>
+                <div class="card-body">
+                    <h4>Translations</h4>
+                    <span *ngFor="let translation of country.translations | keyvalue" class="badge bg-primary m-1">{{translation.value}}</span>
+                </div>
+            </div>
+        </div>
+        
+        <pre *ngIf="false" class="mt-5">
+            {{country | json}}
+        </pre>
+    </div>
+</ng-template>
