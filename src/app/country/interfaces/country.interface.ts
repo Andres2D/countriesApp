@@ -19,7 +19,7 @@ export interface Country {
     numericCode:    string;
     currencies:     Currency[];
     languages:      Language[];
-    translations:   Translations;
+    translations:   any;
     flag:           string;
     regionalBlocs:  RegionalBloc[];
     cioc:           string;
@@ -43,17 +43,4 @@ export interface RegionalBloc {
     name:          string;
     otherAcronyms: any[];
     otherNames:    string[];
-}
-
-export interface Translations {
-    de: string;
-    es: string;
-    fr: string;
-    ja: string;
-    it: string;
-    br: string;
-    pt: string;
-    nl: string;
-    hr: string;
-    fa: string;
 }

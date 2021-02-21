@@ -13,6 +13,7 @@ import { Country } from '../../interfaces/country.interface';
 export class SeeCountryComponent implements OnInit {
 
   country!: Country;
+  mapUrl = '';
 
   constructor(private activateRoute: ActivatedRoute, private countryService: CountryService) { }
 
@@ -30,5 +31,10 @@ export class SeeCountryComponent implements OnInit {
           tap(console.log)
         )
         .subscribe(country => this.country = country)
+  }
+
+  GoToMap(){
+    window.open( 
+      `https://www.google.com/maps/search/?api=1&query=${this.country.name}`, "_blank");
   }
 }
