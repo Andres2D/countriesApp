@@ -18,17 +18,9 @@ export class SeeCountryComponent implements OnInit {
   constructor(private activateRoute: ActivatedRoute, private countryService: CountryService) { }
 
   ngOnInit() {
-    /*this.activateRoute.params
-      .subscribe( ({id}) => {
-        this.countryService.SearchCountry(id, 'alpha')
-          .subscribe( country => {
-          });
-      });*/
-
       this.activateRoute.params
         .pipe(
-          switchMap(( param ) => this.countryService.SearchCountry(param.id)),
-          tap(console.log)
+          switchMap(( param ) => this.countryService.SearchCountry(param.id))
         )
         .subscribe(country => this.country = country)
   }

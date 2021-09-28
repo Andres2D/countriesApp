@@ -12,6 +12,7 @@ export class ByRegionComponent {
   regions: string[] = ['africa', 'americas', 'asia', 'europe', 'oceania'];
   activatedRegion: string = '';
   countries: Country[] = [];
+  showAlertError: boolean = false;
 
   constructor(private countryService: CountryService) { }
 
@@ -20,7 +21,12 @@ export class ByRegionComponent {
     this.countries = [];
     this.activatedRegion = region;
     this.countryService.SearchCountries(region, 'continent')
-      .subscribe(countries => this.countries = countries);
+      .subscribe((countries) => {
+        this.countries = countries
+      }, error => {
+        this.countries = [];
+        this.showAlertError = true;
+      });
   }
 
   GetCssClass(region: string): string{

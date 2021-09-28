@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Country } from '../../interfaces/country.interface';
 
 @Component({
@@ -7,16 +7,6 @@ import { Country } from '../../interfaces/country.interface';
   styleUrls: ['./country-table.component.css']
 })
 
-export class CountryTableComponent implements OnInit {
-
-
+export class CountryTableComponent {
   @Input() countries: Country[] = [];
-  
-  constructor() { }
-
-  ngOnInit() {
-    console.log(this.countries);
-    
-  }
-
 }

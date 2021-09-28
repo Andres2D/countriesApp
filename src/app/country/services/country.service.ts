@@ -18,13 +18,8 @@ export class CountryService {
 
     const params = new HttpParams()
       .set('fields', 'name,flag,capital,alpha2Code,population');
-    
-      console.log(`${this._apiUrl}/${endpoint}/${term}`);
-
-    return this.http.get<Country[]>(`${this._apiUrl}/${endpoint}/${term}`, { params })
-      .pipe(
-        tap(console.log)
-      )
+      
+    return this.http.get<Country[]>(`${this._apiUrl}/${endpoint}/${term}`, { params });
   }
 
   SearchCountry(term: string): Observable<Country> {
