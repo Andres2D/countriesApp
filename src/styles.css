@@ -4,6 +4,10 @@
     width: 50px;
 }
 
+.flag {
+    font-size: 35px;
+}
+
 .footer {
     position: fixed;
     left: 0;

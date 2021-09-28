@@ -5,11 +5,7 @@ import { Country } from '../../interfaces/country.interface';
 @Component({
   selector: 'app-by-region',
   templateUrl: './by-region.component.html',
-  styles: [`
-    button{
-      margin-right: 5px;
-    }
-  `]
+  styleUrls: ['./by-region.component.css']
 })
 export class ByRegionComponent {
   
@@ -23,7 +19,7 @@ export class ByRegionComponent {
     if(region === this.activatedRegion){return}
     this.countries = [];
     this.activatedRegion = region;
-    this.countryService.SearchCountries(region, 'region')
+    this.countryService.SearchCountries(region, 'continent')
       .subscribe(countries => this.countries = countries);
   }
 
