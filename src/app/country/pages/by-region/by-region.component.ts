@@ -20,7 +20,7 @@ export class ByRegionComponent {
     if(region === this.activatedRegion){return}
     this.countries = [];
     this.activatedRegion = region;
-    this.countryService.SearchCountries(region, 'continent')
+    this.countryService.SearchCountries(region, 'region')
       .subscribe((countries) => {
         this.countries = countries
       }, error => {

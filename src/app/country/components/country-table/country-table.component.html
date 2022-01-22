@@ -13,9 +13,9 @@
             <tr class="animate__animated animate__fadeIn" *ngFor="let country of countries; let i = index">
                 <td>{{i+1}}</td>
                 <td>
-                    <img [routerLink]="['/country', country.alpha2Code]" style="cursor: pointer;" class="small-flag" [src]="country.flag" [alt]="country.name">
+                    <span>{{country.flag}}</span>
                 </td>
-                <td>{{country.capital}}, {{country.name}}</td>
+                <td>{{country.capital}}, <strong>{{country?.name?.common}}</strong></td>
                 <td align="right">{{country.population | number}}</td>
             </tr>
         </tbody>
