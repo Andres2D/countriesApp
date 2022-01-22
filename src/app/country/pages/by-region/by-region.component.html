@@ -5,11 +5,6 @@
     <h5>Select the region</h5>
     <div class="row">
         <div class="col">
-            <!--[class.btn-primary]="region === activatedRegion" -->
-            <!--[ngClass]="{
-                    'btn-primary': activatedRegion === region,
-                    'btn-outline-primary': activatedRegion !== region
-                }"-->
             <button [class]="GetCssClass(region)" 
                 *ngFor="let region of regions" 
                 
