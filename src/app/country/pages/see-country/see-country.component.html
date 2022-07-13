@@ -3,14 +3,14 @@
 </div>
 
 <ng-template #divCountry>
-    <h2>{{country.name}} [{{country.alpha2Code}}]</h2>
+    <h2>{{country.name.common}} ({{country.name.official}}) [{{countryNativeName.common}}]</h2>
     <hr>
     <div class="row">
         <div class="col-xl-6 col-md-6 col-xs-12">
-            <div class="card">
-                <img [src]="country.flag" class="card-img-top img-thumbnail" alt="...">
+            <div class="custom-card">
+                <span class="flag">{{country.flag}}</span>
                 <div class="card-body">
-                    <h5 class="card-title">{{country.capital}}, {{country.name}}</h5>
+                    <h5 class="card-title">{{country.capital[0]}}</h5>
                     <p class="card-text">{{country.altSpellings}}</p>
                     <a class="nav-link" style="cursor: pointer;" (click)="GoToMap()">See on Map</a>
                 </div>
@@ -22,18 +22,24 @@
                     <li class="list-group-item"><strong>Population: </strong>{{country.population | number}}</li>
                     <li class="list-group-item"><strong>Time Zone: </strong>{{country.timezones}}</li>
                     <li class="list-group-item"><strong>Region: </strong>{{country.region}}, {{country.subregion}}</li>
-                    <li class="list-group-item"><strong>Demonym: </strong>{{country.demonym}}</li>
-                    <li class="list-group-item"><strong>Calling Code: </strong>{{country.callingCodes}}</li>
-                    <li class="list-group-item"><strong>Coins: </strong><p *ngFor="let currency of country.currencies">
-                        {{currency.code}}, {{currency.name}}, {{currency.symbol}}</p>
+                    <li class="list-group-item"><strong>demonyms: </strong>{{countryFemonymsM.m}} - {{countryFemonymsM.f}}</li>
+                    <li class="list-group-item"><strong>Calling Code: </strong>{{country.idd.root}}{{country.idd.suffixes[0]}}</li>
+                    <li class="list-group-item"><strong>Coins: </strong>
+                      <p *ngFor="let currency of country.currencies | keyvalue">
+                        {{currency.key}}, {{currency.value.name}}, {{currency.value.symbol}}
+                      </p>
                     </li>
-                    <li class="list-group-item"><strong>Languages: </strong><p *ngFor="let language of country.languages">
-                            {{language.name}} - {{language.nativeName}}</p>
+                    <li class="list-group-item"><strong>Languages: </strong>
+                      <p *ngFor="let language of country.languages | keyvalue">
+                        {{language.key}} - {{language.value}}
+                      </p>
                     </li>
                 </ul>
                 <div class="card-body">
                     <h4>Translations</h4>
-                    <span *ngFor="let translation of country.translations | keyvalue" class="badge bg-primary m-1">{{translation.value}}</span>
+                    <span *ngFor="let translation of country.translations | keyvalue" class="badge bg-primary m-1">
+                      {{translation.value.common}}
+                    </span>
                 </div>
             </div>
         </div>

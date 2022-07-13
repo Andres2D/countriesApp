@@ -1,0 +1,12 @@
+.custom-card {
+  border: 1px solid gray;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.flag {
+  font-size: 180px;
+}
