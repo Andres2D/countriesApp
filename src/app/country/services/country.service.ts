@@ -22,7 +22,7 @@ export class CountryService {
     return this.http.get<Country[]>(`${this._apiUrl}/${endpoint}/${term}`, { params });
   }
 
-  SearchCountry(term: string): Observable<Country> {
-    return this.http.get<Country>(`${this._apiUrl}/alpha/${term}`);
+  SearchCountry(term: string): Observable<any> {
+    return this.http.get<any>(`${this._apiUrl}/name/${term}`);
   }
 }
