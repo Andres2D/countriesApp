@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { Country } from '../../interfaces/country.interface';
 
 @Component({
@@ -9,4 +10,11 @@ import { Country } from '../../interfaces/country.interface';
 
 export class CountryTableComponent {
   @Input() countries: Country[] = [];
+
+  constructor(private router: Router) {}
+
+  goToCountry(name: any): void {
+    console.log(name?.common);
+    this.router.navigate([`/country/${name?.common}`]);
+  }
 }

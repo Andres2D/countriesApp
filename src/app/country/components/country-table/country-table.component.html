@@ -10,14 +10,20 @@
             </tr>
         </thead>
         <tbody>
-            <tr class="animate__animated animate__fadeIn" *ngFor="let country of countries; let i = index">
+          <ng-container>
+            <tr *ngFor="let country of countries; let i = index"
+              class="country animate__animated animate__fadeIn" 
+              (click)="goToCountry(country.name)"
+              >
                 <td>{{i+1}}</td>
                 <td>
-                    <span>{{country.flag}}</span>
+                  <span>{{country.flag}}</span>
                 </td>
                 <td>{{country.capital}}, <strong>{{country?.name?.common}}</strong></td>
                 <td align="right">{{country.population | number}}</td>
             </tr>
+          </ng-container>
+          
         </tbody>
     </table>
 </div>
